@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#100b20">
+<title>Stephan's Design Complexity Bureau</title>
+<style>
+:root{--bg:#100b20;--panel:#19122c;--purple:#b89aff;--pink:#ff91db;--text:#f2ecff;--muted:#aaa0c3;--line:#493567}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 85% 5%,#38205d,transparent 43%),var(--bg);color:var(--text);font:15px/1.7 system-ui,-apple-system,sans-serif}
+header,footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:19px clamp(18px,5vw,60px);border-bottom:1px solid var(--line)}
+footer{border-top:1px solid var(--line);border-bottom:0;font-size:10px;color:var(--muted);letter-spacing:1px}
+.brand{font-size:12px;font-weight:900;letter-spacing:2px}.brand span{color:var(--purple)}
+.status{font-size:10px;letter-spacing:1px;color:var(--pink)}
+main{max-width:1050px;margin:auto;padding:clamp(27px,6vw,65px) clamp(18px,5vw,60px)}
+.eyebrow{color:var(--purple);font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase}
+h1{font-size:clamp(40px,8vw,84px);line-height:.98;letter-spacing:-.075em;margin:20px 0}
+h1 em{font-style:normal;color:var(--purple);text-shadow:0 0 30px #b89aff40}
+.intro{color:var(--muted);max-width:600px;margin:25px 0 38px;font-size:16px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.metric{position:relative;overflow:hidden;background:linear-gradient(135deg,#211637,#171126);border:1px solid var(--line);padding:23px;min-height:155px;transition:transform .25s,border-color .25s}
+.metric:hover{transform:translateY(-3px);border-color:var(--purple)}
+.metric:after{content:"";position:absolute;right:-25px;top:-25px;width:85px;height:85px;border:1px solid #b89aff30;border-radius:50%;box-shadow:0 0 0 12px #b89aff08,0 0 0 24px #b89aff05;pointer-events:none}
+.label{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+.value{font-size:clamp(34px,6vw,52px);font-weight:850;letter-spacing:-.06em;margin-top:12px}
+.value small{font-size:14px;color:var(--pink);letter-spacing:0}
+.track{height:4px;background:#36264b;margin-top:14px}
+.fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--pink));animation:glow 3s ease-in-out infinite alternate}
+button{width:100%;margin-top:25px;padding:19px 15px;border:1px solid var(--purple);background:linear-gradient(100deg,#8e5bdf,#bd79ed);color:#120b20;font-size:11px;font-weight:900;letter-spacing:1.3px;cursor:pointer;transition:filter .2s,transform .2s}
+button:hover:not(:disabled){filter:brightness(1.18);transform:translateY(-2px)}
+button:focus-visible{outline:2px solid white;outline-offset:4px}
+button:disabled{opacity:.65;cursor:wait}
+.pipeline{margin-top:28px;padding:22px;border:1px solid var(--line);background:#0c0816}
+.pipehead{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:10px;letter-spacing:1px;color:var(--purple)}
+.nodes{display:flex;align-items:center;gap:8px;margin-top:20px}
+.node{flex:1;min-width:0;padding:12px 4px;border:1px solid var(--line);text-align:center;font-size:9px;color:var(--muted);overflow-wrap:anywhere}
+.node.active{border-color:var(--pink);color:white;box-shadow:0 0 16px #ff91db20}
+.arrow{color:var(--pink)}
+.output,.personal{display:none;margin-top:25px;padding:clamp(22px,5vw,38px);border:1px solid var(--pink);background:linear-gradient(145deg,#261537,#151020);overflow-wrap:anywhere}
+.personal{border-color:var(--purple);background:linear-gradient(145deg,#211536,#120c20)}
+.show{display:block;animation:rise .55s ease both}
+.output h2,.personal h2{color:var(--pink);font-size:clamp(26px,5vw,43px);line-height:1.12;letter-spacing:-.05em}
+.personal h2{color:var(--purple)}
+.output p,.personal p{color:#e7dff6;line-height:1.9}
+.signature{color:var(--purple)!important;font-weight:700;margin-top:24px}
+.disclaimer{font-size:10px;color:var(--muted);margin-top:25px}
+@keyframes glow{from{opacity:.6}to{opacity:1;filter:brightness(1.5)}}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.nodes{gap:4px}.node{font-size:8px;padding:10px 2px}.arrow{font-size:10px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="brand">SCB <span>/</span> DESIGN COMPLEXITY BUREAU</div><div class="status">● CREATIVE PIPELINE ONLINE</div></header>
+<main>
+<div class="eyebrow">Department of Improbable Implementations</div>
+<h1>Beautiful design.<br><em>Questionable</em><br>complexity.</h1>
+<p class="intro">Welcome, Stephan. Your latest creative masterpiece has entered the engineering translation pipeline. The developer has been notified. The developer has taken a deep breath.</p>
+<section class="grid" aria-label="Fictional project metrics">
+<div class="metric"><div class="label">Layers to decode</div><div class="value">46</div><div class="track"><div class="fill" style="width:100%"></div></div></div>
+<div class="metric"><div class="label">Pixels of freedom</div><div class="value">0.5 <small>px</small></div><div class="track"><div class="fill" style="width:8%"></div></div></div>
+<div class="metric"><div class="label">"Quick" changes</div><div class="value">27</div><div class="track"><div class="fill" style="width:94%"></div></div></div>
+<div class="metric"><div class="label">Developer sanity remaining</div><div class="value" style="color:var(--pink)">2<small>%</small></div><div class="track"><div class="fill" style="width:2%"></div></div></div>
+</section>
+<section class="pipeline">
+<div class="pipehead"><span>DESIGN-TO-DEV PROTOCOL</span><span id="pipeStatus">AWAITING INPUT</span></div>
+<div class="nodes">
+<div class="node" id="n1">DESIGN FILE</div><span class="arrow">›</span>
+<div class="node" id="n2">INTERPRET</div><span class="arrow">›</span>
+<div class="node" id="n3">CSS PANIC</div><span class="arrow">›</span>
+<div class="node" id="n4">DEPLOY?</div>
+</div>
+</section>
+<button id="translate">TRANSLATE DESIGN INTO REALITY ↗</button>
+<section class="output" id="output" aria-live="polite">
+<div class="eyebrow">Translation report / 001</div>
+<h2>TRANSLATION COMPLETE*</h2>
+<p>*The layout works at 1440px, 1280px, 768px, and on one device found in an archaeological dig.</p>
+<p>Stephan, thank you for keeping my CSS skills, problem-solving, and patience in constant training.</p>
+<p>Final notice: your web developer is leaving. All future 'it's just a small change' requests must be sent directly to the universe.</p>
+<button id="personalButton">UNLOCK CLASSIFIED MEMORIES</button>
+</section>
+
+<section class="personal" id="personal" aria-live="polite">
+  <div class="eyebrow">CLASSIFIED FILE // STEPHAN</div>
+
+  <h2>Okay, one last thing, Maneer.</h2>
+
+  <p>
+    Stephan, thanks for all the complicated designs that had me questioning
+    my CSS skills and wondering why nothing could ever just be a normal div.
+    You definitely kept me busy.
+  </p>
+
+  <p>
+    I'll also never forget you shooting vodka down my throat with that tiny
+    water gun. Aweh, Maneer, what was that all about?
+  </p>
+
+  <p>
+    And obviously, the legendary beer pong game that never happened because
+    you blacked out before we could even start. One project we never managed
+    to get across the finish line.
+  </p>
+
+  <p>
+    Jokes aside, thanks for all the laughs, the challenges and the random
+    memories. It was lekker working with you, and I appreciate you making
+    things interesting both in and out of work.
+  </p>
+
+  <p>
+    All the best for everything ahead, and please don't make the next
+    developer suffer too much.
+  </p>
+
+  <p class="signature">
+    P.S. We still owe each other a game of beer pong. Let's actually make
+    it happen next time.
+    <br><br>
+    Baie dankie, Maneer.
+    <br>
+    — Your favourite web developer
+  </p>
+</section>
+
+<p class="disclaimer">FICTIONAL SIMULATION ONLY. Metrics are made up for this joke. No design files are read, no services are contacted, and no actual build or deployment occurs.</p>
+</main>
+<footer><span>SCB // IMAGINARY ENGINEERING DIVISION</span><span>COMPLEXITY IS A FEATURE*</span></footer>
+<script>
+const button=document.querySelector("#translate"),output=document.querySelector("#output"),personal=document.querySelector("#personal"),personalButton=document.querySelector("#personalButton"),pipeStatus=document.querySelector("#pipeStatus");
+const nodes=[1,2,3,4].map(i=>document.querySelector("#n"+i));
+let running=false;
+button.addEventListener("click",()=>{
+if(running)return;
+running=true;button.disabled=true;output.classList.remove("show");personal.classList.remove("show");nodes.forEach(n=>n.classList.remove("active"));
+pipeStatus.textContent="TRANSLATION IN PROGRESS";button.textContent="TRANSLATING... PLEASE STAND BY";
+let i=0;const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function advance(){
+if(i===nodes.length){
+pipeStatus.textContent="COMPLETE — SOMEHOW";output.classList.add("show");button.disabled=false;button.textContent="↻ TRANSLATE ANOTHER IMPOSSIBLE DESIGN";running=false;output.scrollIntoView({behavior:"auto",block:"nearest"});return;
+}
+nodes.forEach((n,index)=>n.classList.toggle("active",index===i));
+i++;setTimeout(advance,reduced?0:420);
+}
+advance();
+});
+
+personalButton.addEventListener("click", () => {
+  const opened = personal.classList.toggle("show");
+
+  personalButton.textContent = opened
+    ? "HIDE PERSONAL MESSAGE"
+    : "UNLOCK CLASSIFIED MEMORIES";
+
+  personalButton.setAttribute("aria-expanded", String(opened));
+
+  if (opened) {
+    personal.scrollIntoView({
+      behavior: "auto",
+      block: "nearest"
+    });
+  }
+});
+
+personalButton.setAttribute("aria-expanded", "false");
+
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f4f0e7">
+<title>Calvin's Orphan Police</title>
+<style>
+:root{--paper:#f4f0e7;--ink:#181818;--yellow:#f4db40;--muted:#77746b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+header,footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:18px clamp(18px,5vw,65px);border-bottom:2px solid var(--ink);font-size:10px;font-weight:900;letter-spacing:1.5px}
+footer{border-top:2px solid var(--ink);border-bottom:0}
+main{max-width:1050px;margin:auto;padding:clamp(24px,6vw,72px) clamp(18px,5vw,65px)}
+.kicker{font-size:11px;font-weight:900;letter-spacing:3px;text-transform:uppercase}
+h1{font-size:clamp(48px,11vw,112px);line-height:.84;letter-spacing:-.085em;text-transform:uppercase;margin:30px 0}
+.highlight{background:var(--yellow);padding:0 .08em}
+.sub{font-family:Georgia,serif;font-style:italic;font-size:clamp(21px,3vw,29px);margin:30px 0 38px}
+.stamp{display:inline-block;border:2px solid var(--ink);padding:9px 12px;font-size:10px;font-weight:900;letter-spacing:2px;transform:rotate(-2deg)}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);margin:38px 0}
+.stat{padding:24px 16px 25px 0}
+.stat+.stat{border-left:1px solid #c9c4b9;padding-left:22px}
+.number{font-size:clamp(37px,7vw,65px);font-weight:900;letter-spacing:-.07em;line-height:1.1}
+.stat p{font-size:11px;text-transform:uppercase;letter-spacing:1.2px;font-weight:800}
+.evidence{display:grid;grid-template-columns:100px 1fr;gap:20px;padding:23px 0;border-bottom:1px solid #c9c4b9}
+.tag{font-size:10px;font-weight:900;letter-spacing:1px;background:var(--yellow);padding:8px;height:max-content;text-align:center}
+.quote{font-size:clamp(24px,5vw,42px);font-weight:900;letter-spacing:-.04em}
+.caption{color:var(--muted);font-family:Georgia,serif;font-size:14px;margin-top:9px}
+button{margin-top:30px;width:100%;padding:19px;background:var(--ink);color:var(--paper);border:2px solid var(--ink);font-size:12px;font-weight:900;letter-spacing:2px;cursor:pointer;transition:background .2s,color .2s}
+button:hover{background:var(--yellow);color:var(--ink)}
+button:focus-visible{outline:3px solid #b09b00;outline-offset:4px}
+.case,.personal{display:none;margin-top:26px;padding:clamp(22px,5vw,42px);border:2px solid var(--ink)}
+.case{background:var(--yellow)}
+.personal{background:#fffdf7}
+.show{display:block;animation:open .5s ease both}
+.case h2,.personal h2{font-size:clamp(29px,6vw,51px);letter-spacing:-.06em;line-height:1.05;margin:0 0 23px}
+.case p,.personal p{font-size:15px;line-height:1.9;max-width:680px}
+.signature{font-family:Georgia,serif;font-style:italic;margin-top:24px}
+@keyframes open{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:520px){.stats{grid-template-columns:1fr}.stat+.stat{border-left:0;border-top:1px solid #c9c4b9;padding-left:0}.evidence{grid-template-columns:1fr;gap:12px}.tag{width:max-content}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><span>CC / CREATIVE COMPLIANCE</span><span>CASE FILE 026 — FINAL REVIEW</span></header>
+<main>
+<div class="kicker">Department of Typographic Justice</div>
+<h1>Calvin's<br><span class="highlight">Orphan</span><br>Police.</h1>
+<p class="sub">Formal Design Investigation</p>
+<span class="stamp">OFFICIAL QUALITY CONTROL</span>
+<section class="stats">
+<div class="stat"><div class="number">100%</div><p>Chance Calvin noticed</p></div>
+<div class="stat"><div class="number">0</div><p>Orphans escaping review</p></div>
+</section>
+<section class="evidence">
+<div class="tag">EXHIBIT A</div>
+<div><div class="kicker">Evidence recovered from the layout</div><div class="quote">"WHY IS THIS ORPHANED?"</div><div class="caption">A phrase that continues to echo through the creative department.</div></div>
+</section>
+<section class="evidence">
+<div class="tag">FINDING</div>
+<div><div class="quote">NO WORD LEFT BEHIND.</div><div class="caption">All headings, paragraphs and suspiciously lonely words are under observation.</div></div>
+</section>
+<button id="audit">OPEN THE FINAL AUDIT ↗</button>
+<section class="case" id="case" aria-live="polite">
+<h2>CASE CLOSED…<br>FOR NOW.</h2>
+<p>Calvin, thank you for keeping the orphan population under control. Every heading, line and paragraph will forever hear your voice saying: CHECK THE ORPHANS!</p>
+<p>My final handover includes one last promise: I will think of you every time a lonely word sits at the end of a line.</p>
+<p class="signature">— Your soon-to-be-former web developer</p>
+<span class="stamp">AUDIT COMPLETE · RELEASED ON GOOD BEHAVIOUR</span>
+<button id="personalButton">OFF THE RECORD: ONE LAST THING...</button>
+</section>
+<section class="personal" id="personal" aria-live="polite">
+<div class="kicker">OFF THE RECORD // PERSONAL NOTE</div>
+<h2>CASE CLOSED. FRIENDSHIP ONGOING.</h2>
+<p>Calvin, thank you for all the laughs, the conversations and those 15-minute smoke breaks where we talked about practically everything except work.</p>
+<p>I'll genuinely miss those little breaks with you. It's funny how the smallest parts of the workday can end up being the things you remember most.</p>
+<p>And don't worry — I'll continue checking for orphaned text. Your voice shouting "CHECK THE ORPHANS!" has permanently installed itself in my brain. There's no uninstall button for that one.</p>
+<p>Thanks for being someone I could chat with, laugh with and enjoy spending time around. I'm really glad I got to know you.</p>
+<p class="signature">Final ruling: All orphans must be checked. All good colleagues must be appreciated.<br><br>— Your soon-to-be-former web developer</p>
+</section>
+<p class="caption" style="margin-top:28px">A fictional, affectionate design-audit joke. No actual website has been inspected.</p>
+</main>
+<footer><span>CREATIVE QUALITY ASSURANCE</span><span>ORPHANS HAVE RIGHTS, TOO.</span></footer>
+<script>
+const audit=document.querySelector("#audit"),panel=document.querySelector("#case"),personal=document.querySelector("#personal"),personalButton=document.querySelector("#personalButton");
+audit.addEventListener("click",()=>{
+const opening=!panel.classList.contains("show");
+panel.classList.toggle("show",opening);
+if(!opening)personal.classList.remove("show");
+audit.textContent=opening?"✓ CASE FILE OPENED — CLOSE AUDIT":"OPEN THE FINAL AUDIT ↗";
+audit.setAttribute("aria-expanded",String(opening));
+if(opening)panel.scrollIntoView({behavior:"auto",block:"nearest"});
+});
+personalButton.addEventListener("click",()=>{
+personal.classList.toggle("show");
+const opened=personal.classList.contains("show");
+personalButton.textContent=opened?"✓ PERSONAL NOTE OPENED — HIDE":"OFF THE RECORD: ONE LAST THING...";
+personalButton.setAttribute("aria-expanded",String(opened));
+if(opened)personal.scrollIntoView({behavior:"auto",block:"nearest"});
+});
+audit.setAttribute("aria-expanded","false");
+personalButton.setAttribute("aria-expanded","false");
+</script>
+</body>
+</html>

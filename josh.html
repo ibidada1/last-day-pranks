@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080d0b">
+<title>Josh's Developer Incident Console</title>
+<style>
+:root{color-scheme:dark;--green:#70ff9b;--dim:#83a58e;--red:#ff5368}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at top,#122b1c,#080d0b 65%);color:#dce9df;font:15px/1.7 "Courier New",monospace;padding:20px 14px}
+main{max-width:850px;margin:4vh auto;border:1px solid #315640;background:#0a110d;box-shadow:0 0 65px #36ff7b0c}
+header,footer{padding:14px 20px;background:#13231a;color:var(--green);font-size:11px;letter-spacing:1px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+footer{background:transparent;border-top:1px solid #25432e;color:var(--dim)}
+.content{padding:clamp(20px,5vw,44px)}
+.eyebrow{font-size:10px;letter-spacing:3px;color:var(--dim)}
+h1{font-size:clamp(27px,6vw,46px);line-height:1.12;color:var(--green);letter-spacing:-1px}
+h1 span{color:#fff}
+.lead{font-size:clamp(20px,4vw,28px);color:white;margin-top:34px}
+.green{color:var(--green)}.red{color:var(--red)}
+.panel{background:#050906;border:1px solid #24432e;padding:18px;margin:22px 0}
+.log{min-height:95px;color:var(--dim);white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px}
+.progress{height:7px;background:#1a2b20;margin:16px 0;overflow:hidden}
+.bar{height:100%;width:0;background:var(--green);transition:width .2s}
+button{font:700 12px "Courier New",monospace;letter-spacing:1px;padding:16px;background:var(--green);color:#061109;border:0;cursor:pointer;width:100%;margin-top:10px}
+button:hover:not(:disabled){background:#b0ffc4;box-shadow:0 0 20px #70ff9b25}
+button:focus-visible{outline:2px solid white;outline-offset:4px}
+button:disabled{opacity:.6;cursor:wait}
+.report,.personal{display:none;padding:clamp(20px,4vw,32px);margin-top:22px;overflow-wrap:anywhere}
+.report{border:1px solid var(--red);background:#170b0e}
+.personal{border:1px solid #315640;background:linear-gradient(140deg,#10271a,#0a110d)}
+.show{display:block;animation:appear .6s ease both}
+.report h2{color:var(--red);font-size:14px;letter-spacing:2px}
+.personal h2{color:var(--green);font-size:clamp(23px,4vw,32px);line-height:1.2}
+.personal p,.report p{line-height:1.85}
+.signature{color:var(--green);margin-top:24px}
+.note{font-size:10px;color:var(--dim);margin-top:24px}
+@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<header><span>● DEVOPS / INCIDENT CONSOLE</span><span>SESSION: LAST-DAY-001</span></header>
+<div class="content">
+<div class="eyebrow">ENGINEERING DIAGNOSTICS // BUILD 0.0.1-FINAL</div>
+<h1>JOSH'S<br><span>DEVELOPER INCIDENT CONSOLE</span></h1>
+<p class="green">● SYSTEM ONLINE &nbsp; ● COFFEE LEVEL UNKNOWN</p>
+<div class="lead">Something is broken.</div>
+<p style="color:var(--dim)">An incident has been detected. The engineer denies responsibility. The code refuses to comment.</p>
+<section class="panel">
+<div class="eyebrow">LIVE DIAGNOSTIC OUTPUT</div>
+<div class="log" id="log" aria-live="polite">Awaiting engineer confirmation...
+Ready when you are, Josh.</div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+<div id="status" class="green">STATUS: IDLE</div>
+</section>
+<button id="run">▶ RUN FINAL DEBUG</button>
+<section class="report" id="report" aria-live="polite">
+<h2>⚠ INCIDENT REPORT — SEVERITY: CLASSIC</h2>
+<p>IT WORKS ON MY MACHINE.</p>
+<p>Root cause: between keyboard and chair.</p>
+<p>Recommended fix: ask the departing web developer. Oh wait — he's leaving.</p>
+<p>Final status: still broken, but now it's a documented feature.</p>
+<p class="green">INCIDENT RESOLVED: TECHNICALLY NO. EMOTIONALLY, ALMOST.</p>
+<button id="personalButton">ONE LAST THING, JOSH...</button>
+</section>
+<section class="personal" id="personal" aria-live="polite">
+<div class="eyebrow">PERSONAL MESSAGE // NOT A SIMULATION</div>
+<h2>Incident resolved: a genuinely good colleague detected.</h2>
+<p>Josh, thank you for always helping me check whether something on the website was actually broken. Whenever I needed a second pair of eyes, you were someone I could turn to.</p>
+<p>I'll always remember when I first started and you made me a coffee and asked if I wanted to join you guys for coffee breaks. It might have seemed like a small thing, but it helped me feel welcome when everything was still new.</p>
+<p>Thank you for being so helpful, approachable and kind to me. I'll genuinely miss having you around to investigate the next mysterious website bug.</p>
+<p class="signature">P.S. If something breaks after I leave, I'm afraid the departing developer is no longer accepting requests </p>
+<p class="green">Thanks for making my time here a little better, Josh. — Your soon-to-be-former web developer</p>
+</section>
+<p class="note">FICTIONAL DIAGNOSTIC. No system scan, network request, file access or actual debugging takes place.</p>
+</div>
+<footer><span>JOSH // ENGINEERING OPERATIONS</span><span>ERROR 418: DEVELOPER IS LEAVING</span></footer>
+</main>
+<script>
+const run=document.querySelector("#run"),log=document.querySelector("#log"),bar=document.querySelector("#bar"),status=document.querySelector("#status"),report=document.querySelector("#report"),personal=document.querySelector("#personal");
+const steps=["Initializing highly sophisticated pretend diagnostics...","Checking dependencies. Blaming dependencies...","Searching for the elusive semicolon...","Analyzing keyboard-to-chair interface...","Calculating how to replace a departing developer..."];
+let timer;
+run.addEventListener("click",()=>{
+if(run.disabled)return;
+clearInterval(timer);run.disabled=true;report.classList.remove("show");personal.classList.remove("show");bar.style.width="0%";let i=0;
+status.textContent="STATUS: RUNNING SIMULATION";log.textContent="> Starting fictional diagnostic sequence...";
+timer=setInterval(()=>{
+log.textContent+="\n> "+steps[i];bar.style.width=((i+1)/steps.length*100)+"%";i++;
+if(i===steps.length){clearInterval(timer);log.textContent+="\n> Analysis complete. Confidence: unnecessarily high.";status.innerHTML='<span class="red">STATUS: STILL BROKEN</span>';report.classList.add("show");run.textContent="↻ RUN DEBUG AGAIN";run.disabled=false;report.scrollIntoView({behavior:"auto",block:"nearest"});}
+},matchMedia("(prefers-reduced-motion: reduce)").matches?0:550);
+});
+document.querySelector("#personalButton").addEventListener("click",()=>{
+personal.classList.toggle("show");
+const opened=personal.classList.contains("show");
+document.querySelector("#personalButton").textContent=opened?"✓ MESSAGE OPENED — HIDE":"ONE LAST THING, JOSH...";
+if(opened)personal.scrollIntoView({behavior:"auto",block:"nearest"});
+});
+</script>
+</body>
+</html>
